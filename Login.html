@@ -9,117 +9,84 @@
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: 'Assistant', sans-serif;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: #F9FAFB;
+      color: #1F2937;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
-
-    .modal {
-      background-color: #fff;
+    .login-container {
+      background: #fff;
       padding: 2rem;
       border-radius: 1rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
       width: 90%;
       max-width: 400px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
       text-align: center;
     }
-
     h2 {
       color: #1E3A8A;
       margin-bottom: 1rem;
     }
-
-    .input-wrapper {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-
-    input[type="email"],
-    input[type="password"] {
+    input {
       width: 100%;
-      max-width: 100%;
       padding: 0.8rem;
+      margin-bottom: 1rem;
       border: 1px solid #ccc;
       border-radius: 0.5rem;
       font-size: 1rem;
       text-align: center;
     }
-
-    button.login {
+    button {
       width: 100%;
+      padding: 0.8rem;
       background-color: #1E3A8A;
       color: white;
       border: none;
-      padding: 0.8rem;
-      font-size: 1rem;
       border-radius: 0.5rem;
+      font-size: 1rem;
       cursor: pointer;
-      margin-bottom: 1rem;
     }
-
-    button.login:hover {
+    button:hover {
       background-color: #162c6f;
-    }
-
-    .links {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-    }
-
-    .links a {
-      color: #1E3A8A;
-      text-decoration: none;
-    }
-
-    .links a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="modal">
+  <div class="login-container">
     <h2>כניסת משתמש</h2>
     <form id="login-form">
-      <div class="input-wrapper">
-        <input type="email" id="email" placeholder="כתובת אימייל" required>
-      </div>
-      <div class="input-wrapper">
-        <input type="password" id="password" placeholder="סיסמה" required>
-      </div>
-      <button type="submit" class="login">התחבר</button>
+      <input type="email" id="email" placeholder="כתובת אימייל" required>
+      <input type="password" id="password" placeholder="סיסמה" required>
+      <button type="submit">התחבר</button>
     </form>
-    <div class="links">
-      <a href="#">שכחתי סיסמה</a>
-      <a href="#">הרשמה</a>
-    </div>
   </div>
 
   <script>
-    const supabaseUrl = "https://fannhshmrvgwhqgnzgsp.supabase.co";
-    const supabaseAnonKey =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhbm5oc2htcnZnd2hxZ256Z3NwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwMTczMTgsImV4cCI6MjA1NjU5MzMxOH0.duVlDi7OpY6ZhQ5FLfj76gNi5MTc8Y9sZDK895lf5-Q";
+    document.addEventListener("DOMContentLoaded", function () {
+      const supabaseUrl = "https://fannhshmrvgwhqgnzgsp.supabase.co";
+      const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhbm5oc2htcnZnd2hxZ256Z3NwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwMTczMTgsImV4cCI6MjA1NjU5MzMxOH0.duVlDi7OpY6ZhQ5FLfj76gNi5MTc8Y9sZDK895lf5-Q";
 
-    const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
+      const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
 
-    document.getElementById('login-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
+      document.getElementById("login-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
 
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
-      if (error) {
-        alert('שגיאה: ' + error.message);
-      } else {
-        alert('התחברות הצליחה!');
-        window.location.href = 'home.html';
-      }
+        if (error) {
+          alert("שגיאה: " + error.message);
+        } else {
+          alert("התחברות הצליחה!");
+          window.location.href = "home.html";
+        }
+      });
     });
   </script>
 </body>
