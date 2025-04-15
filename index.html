@@ -175,38 +175,40 @@
   </div>
 
   <script>
-    const supabaseUrl = "https://fannhshmrvgwhqgnzgsp.supabase.co";
-    const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhbm5oc2htcnZnd2hxZ256Z3NwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwMTczMTgsImV4cCI6MjA1NjU5MzMxOH0.duVlDi7OpY6ZhQ5FLfj76gNi5MTc8Y9sZDK895lf5-Q";
+    document.addEventListener("DOMContentLoaded", function () {
+      const supabaseUrl = "https://fannhshmrvgwhqgnzgsp.supabase.co";
+      const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhbm5oc2htcnZnd2hxZ256Z3NwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwMTczMTgsImV4cCI6MjA1NjU5MzMxOH0.duVlDi7OpY6ZhQ5FLfj76gNi5MTc8Y9sZDK895lf5-Q";
 
-    const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
+      const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
 
-    const loginModal = document.getElementById("loginModal");
-    const openLogin = document.getElementById("openLogin");
+      const loginModal = document.getElementById("loginModal");
+      const openLogin = document.getElementById("openLogin");
 
-    openLogin.addEventListener("click", () => {
-      loginModal.style.display = "flex";
-    });
+      openLogin.addEventListener("click", () => {
+        loginModal.style.display = "flex";
+      });
 
-    window.addEventListener("click", (e) => {
-      if (e.target === loginModal) {
-        loginModal.style.display = "none";
-      }
-    });
+      window.addEventListener("click", (e) => {
+        if (e.target === loginModal) {
+          loginModal.style.display = "none";
+        }
+      });
 
-    document.getElementById("login-form").addEventListener("submit", async function (e) {
-      e.preventDefault();
+      document.getElementById("login-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
 
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
-      if (error) {
-        alert("שגיאה: " + error.message);
-      } else {
-        alert("התחברות הצליחה!");
-        window.location.href = "home.html";
-      }
+        if (error) {
+          alert("שגיאה: " + error.message);
+        } else {
+          alert("התחברות הצליחה!");
+          window.location.href = "home.html";
+        }
+      });
     });
   </script>
 </body>
