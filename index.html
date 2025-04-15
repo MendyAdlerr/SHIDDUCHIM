@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ברוכים הבאים - שידוכים</title>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     :root {
       --primary: #1E3A8A;
@@ -16,10 +15,6 @@
       --success: #10B981;
       --error: #EF4444;
       --muted: #9CA3AF;
-    }
-
-    * {
-      box-sizing: border-box;
     }
 
     body {
@@ -36,56 +31,41 @@
 
     .container {
       background-color: var(--surface);
-      padding: 2rem 1.5rem;
+      padding: 2rem;
       border-radius: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      max-width: 460px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      max-width: 500px;
       width: 90%;
       text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 1rem;
     }
 
     h1 {
-      font-size: 1.4rem;
+      color: var(--primary);
+      font-size: 1.8rem;
       margin-bottom: 1rem;
     }
 
-    p.description {
+    p {
       font-size: 1rem;
       margin-bottom: 2rem;
-      color: var(--muted);
     }
 
     .button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
+      display: block;
       width: 100%;
       padding: 1rem;
       border: none;
       border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 1.1rem;
       cursor: pointer;
       margin-bottom: 1rem;
-      transition: background-color 0.2s ease, color 0.2s ease;
+      text-decoration: none;
+      text-align: center;
     }
 
     .join-button {
       background-color: var(--primary);
       color: white;
-    }
-    .join-button:hover {
-      background-color: #1b347a;
     }
 
     .login-button {
@@ -93,123 +73,15 @@
       color: var(--primary);
       border: 2px solid var(--primary);
     }
-    .login-button:hover {
-      background-color: var(--primary);
-      color: white;
-    }
-
-    .footer-note {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .modal {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
-
-    .modal-content {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 1rem;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      text-align: center;
-    }
-
-    .modal-content input {
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.8rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-      text-align: center;
-    }
-
-    .modal-content button {
-      width: 100%;
-      background-color: var(--primary);
-      color: white;
-      padding: 0.8rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="logo">שידוכים</div>
     <h1>ברוכים הבאים למיזם השידוכים</h1>
-    <p class="description">מערכת חדשנית למגזר החרדי - לניהול שידוכים בצורה חכמה, שיתופית ונגישה.</p>
-
-    <button class="button join-button">
-      <span>רוצה להצטרף למיזם?</span>
-    </button>
-
-    <button class="button login-button" id="openLogin">כבר רשום? התחבר כאן</button>
-
-    <p class="footer-note">כבר הכרת אותנו? שתף את המיזם עם אחרים - כל שידוך זה עוד מצווה!</p>
+    <p>מערכת חדשנית למגזר החרדי - לניהול שידוכים בצורה חכמה, שיתופית ונגישה.</p>
+    <button class="button join-button">רוצה להצטרף למיזם?</button>
+    <a href="login.html" class="button login-button">כבר רשום? התחבר כאן</a>
+    <p style="font-size: 0.9rem; color: var(--muted);">אם כבר הכרת אותנו, נשמח אם תשתף את המיזם עם אחרים - כל שידוך זה עוד מצווה!</p>
   </div>
-
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <form id="login-form">
-        <h2>כניסת משתמש</h2>
-        <input type="email" id="email" placeholder="כתובת אימייל" required>
-        <input type="password" id="password" placeholder="סיסמה" required>
-        <button type="submit">התחבר</button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const supabaseUrl = "https://fannhshmrvgwhqgnzgsp.supabase.co";
-      const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhbm5oc2htcnZnd2hxZ256Z3NwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDEwMTczMTgsImV4cCI6MjA1NjU5MzMxOH0.duVlDi7OpY6ZhQ5FLfj76gNi5MTc8Y9sZDK895lf5-Q";
-
-      const supabase = supabase.createClient(supabaseUrl, supabaseAnonKey);
-
-      const loginModal = document.getElementById("loginModal");
-      const openLogin = document.getElementById("openLogin");
-
-      openLogin.addEventListener("click", () => {
-        loginModal.style.display = "flex";
-      });
-
-      window.addEventListener("click", (e) => {
-        if (e.target === loginModal) {
-          loginModal.style.display = "none";
-        }
-      });
-
-      document.getElementById("login-form").addEventListener("submit", async function (e) {
-        e.preventDefault();
-
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-
-        if (error) {
-          alert("שגיאה: " + error.message);
-        } else {
-          alert("התחברות הצליחה!");
-          window.location.href = "home.html";
-        }
-      });
-    });
-  </script>
 </body>
 </html>
