@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>תצוגת נתונים מ-Supabase</title>
+    <!-- קישור לקובץ CSS -->
+    <link rel="stylesheet" href="magar.css" />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- קישור לקובץ JavaScript -->
+    <script type="module" src="magar.js"></script>
+
+    <!-- Supabase JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body>
+    <div id="content-container">
+      <div class="header">
+        <h1>מערכת הצגת נתונים</h1>
+      </div>
+
+      <div class="data-container">
+        <div class="controls">
+          <div class="search-box">
+            <i class="fas fa-search search-icon"></i>
+            <input id="search-input" type="text" placeholder="חיפוש..." />
+          </div>
+
+          <div class="view-toggles">
+            <button id="cards-view-button" class="view-button active">
+              <i class="fas fa-th"></i> כרטיסיות
+            </button>
+            <button id="table-view-button" class="view-button">
+              <i class="fas fa-table"></i> טבלה
+            </button>
+          </div>
+        </div>
+
+        <!-- מחוון טעינה -->
+        <div id="loading-indicator">
+          <div class="spinner"></div>
+          <p>טוען נתונים...</p>
+        </div>
+
+        <!-- תצוגת כרטיסיות -->
+        <div id="cards-view" class="cards-grid"></div>
+
+        <!-- תצוגת טבלה -->
+        <div id="table-view" class="table-container hidden">
+          <table>
+            <thead id="table-header">
+              <tr></tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- הודעה כשאין תוצאות -->
+        <div id="no-results" class="hidden">
+          <p>לא נמצאו תוצאות מתאימות.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

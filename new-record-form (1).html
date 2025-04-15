@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <script type="module" src="form_script.js"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>הוספת רשומה חדשה</title>
+    <link rel="stylesheet" href="form_style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>הוספת רשומה חדשה</h1>
+      <form id="recordForm">
+        <div class="form-group">
+          <label for="name">שם:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="name">עיר מגורים:</label>
+          <input type="text" id="city" name="city" required />
+        </div>
+
+        <!--
+        <div class="form-group">
+          <label for="phone">טלפון:</label>
+          <input type="text" id="phone" name="phone" />
+        </div>
+
+        <div class="form-group">
+          <label for="comments">הערות:</label>
+          <textarea id="comments" name="comments"></textarea>
+        </div> -->
+
+        <button type="submit">שלח טופס</button>
+        <button class="btn" onclick="window.location.href='magar.html'">
+          צפה בנתונים
+        </button>
+      </form>
+
+      <div class="success-message" id="successMessage">
+        הרשומה נוספה בהצלחה!
+      </div>
+
+      <div class="error-message" id="errorMessage">
+        אירעה שגיאה בעת הוספת הרשומה. נסה שנית.
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script type="module" src="form_script.js"></script>
+  </body>
+</html>

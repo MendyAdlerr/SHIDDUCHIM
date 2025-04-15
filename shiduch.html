@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ברוכים הבאים למאגר השידוכים</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-color: #f7f7f7;
+        font-family: Arial, sans-serif;
+      }
+
+      .question {
+        display: inline-block;
+        background: white;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border-radius: 8px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: right;
+        opacity: 0;
+        animation: fadeInUp 0.5s ease forwards;
+      }
+
+      .question:hover {
+        transform: scale(1.05);
+        background: #ececec;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-6 max-w-lg text-center">
+      <h1 class="text-2xl font-bold text-gray-800 mb-4">
+        🔍 מכירים מישהו שמחפש שידוך ?
+      </h1>
+      <p class="text-gray-600 mb-6">
+        בוא נשתף אחד את השני את השמות שאנחנו מכירים:
+      </p>
+
+      <div class="questions-container text-right space-y-2">
+        <div class="question" onclick="navigate('add')">יש לי שם של מישהו</div>
+        <div class="question" onclick="navigate('self')">אני מחפש לעצמי</div>
+
+        <div class="question" onclick="navigate('organization')">
+          אני שדכן, מתעסק בזה
+        </div>
+
+        <div class="question" onclick="navigate('organization')">
+          יש אצלי בבניין שכנים
+        </div>
+
+        <div class="question" onclick="navigate('organization')">
+          מכיר חבר מהעבודה
+        </div>
+
+        <div class="question" onclick="navigate('organization')">
+          יש לי במשפחה כמה שצריכים
+        </div>
+        <div class="question" onclick="navigate('browse')">
+          אני מנהלת סמינר יש הרבה
+        </div>
+        <div class="question" onclick="navigate('anonymous')">
+          אצלי בקהילה יש עשרות רווקים ורווקות
+        </div>
+        <div class="question" onclick="navigate('recommend')">
+          אני עובד בישיבה מכיר הרבה שמות
+        </div>
+        <div class="question" onclick="navigate('contact')">
+          בוודאי אשמח לעזור בנושא, יש לי הרבה
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function navigate(role) {
+        let pages = {
+          add: "/add-name",
+          self: "/register",
+          organization: "/organization-signup",
+          browse: "/search",
+          anonymous: "/anonymous-entry",
+          recommend: "/recommend",
+          contact: "/contact",
+        };
+        window.location.href = pages[role];
+      }
+
+      // אנימציות טעינה הדרגתיות
+      document.addEventListener("DOMContentLoaded", function () {
+        const questions = document.querySelectorAll(".question");
+        questions.forEach((question, index) => {
+          question.style.animationDelay = `${index * 0.1}s`;
+        });
+      });
+    </script>
+  </body>
+</html>
