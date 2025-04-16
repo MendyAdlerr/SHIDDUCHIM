@@ -1,96 +1,44 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 body {
   margin: 0;
+  padding-bottom: 70px; /* רווח לסרגל */
   font-family: sans-serif;
-  background-color: #f5f5f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background-color: #f0f0f0;
 }
-
-.form-container {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-}
-
-input {
-  width: 100%;
-  padding: 0.8rem;
-  margin: 0.5rem 0;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-}
-
-button {
-  width: 100%;
-  padding: 0.8rem;
-  background-color: #1E3A8A;
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.links {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-}
-
-.links a {
-  display: inline-block;
-  margin: 0 0.5rem;
-  color: #1E3A8A;
-  text-decoration: none;
-}
-
-.links a:hover {
-  text-decoration: underline;
-}
-
-
-
-
-
-// עיצוב לסרגל תחתון
-
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 .bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
-  background: #ffffff;
-  border-top: 1px solid #e0e0e0;
+  height: 70px;
+  background-color: #ffffff;
+  border-top: 1px solid #ccc;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0 -1px 5px rgba(0,0,0,0.05);
-  z-index: 100;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  direction: ltr;
 }
 
-.bottom-nav .nav-item {
+.nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 0.75rem;
-  color: #1E3A8A;
   text-decoration: none;
+  color: #444;
+  font-size: 0.75rem;
+  transition: color 0.3s;
 }
 
-.bottom-nav .nav-item .material-icons {
-  font-size: 1.5rem;
-  margin-bottom: 0.1rem;
+.nav-item .material-icons {
+  font-size: 24px;
+  margin-bottom: 4px;
 }
 
-.bottom-nav .nav-item:active,
-.bottom-nav .nav-item:hover {
-  color: #0f172a;
+.nav-item:hover,
+.nav-item:active {
+  color: #128c7e;
 }
