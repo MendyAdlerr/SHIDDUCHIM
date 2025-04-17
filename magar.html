@@ -57,6 +57,9 @@
               <tbody id="table-body"></tbody>
             </table>
           </div>
+          <div class="table-scroll-indicator hidden">
+            <i class="fas fa-arrows-left-right"></i> גלול ימינה ושמאלה להצגת כל הנתונים
+          </div>
         </div>
         <!-- הודעה כשאין תוצאות -->
         <div id="no-results" class="hidden">
@@ -72,6 +75,36 @@
         .then(html => {
           document.getElementById("nav-placeholder").innerHTML = html;
         });
+        
+      // קוד להצגת מחוון גלילה בטבלה
+      document.addEventListener('DOMContentLoaded', function() {
+        const tableContainer = document.querySelector('.table-wrapper');
+        const scrollIndicator = document.querySelector('.table-scroll-indicator');
+        
+        if (tableContainer && scrollIndicator) {
+          // בדיקה אם יש צורך בגלילה אופקית
+          function checkScroll() {
+            if (tableContainer.scrollWidth > tableContainer.clientWidth) {
+              scrollIndicator.classList.remove('hidden');
+              
+              // הסתרת המחוון לאחר 3 שניות
+              setTimeout(function() {
+                scrollIndicator.classList.add('hidden');
+              }, 3000);
+            } else {
+              scrollIndicator.classList.add('hidden');
+            }
+          }
+          
+          // בדיקה בעת הצגת הטבלה
+          document.getElementById('table-view-button').addEventListener('click', function() {
+            setTimeout(checkScroll, 100); // קצת זמן לטעינת הטבלה
+          });
+          
+          // בדיקה בעת שינוי גודל החלון
+          window.addEventListener('resize', checkScroll);
+        }
+      });
     </script>
   </body>
 </html>
