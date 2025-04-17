@@ -33,10 +33,13 @@ body {
 }
 
 //.......... אזור התוכן הראשי 
+
 .main-content {
   padding: 1rem;
-  max-width: 800px;
   margin: 0 auto;
+  max-width: 800px;         /* רוחב מקסימלי במסכים גדולים */
+  width: 100%;              /* תופס את כל הרוחב במסכים קטנים */
+  box-sizing: border-box;   /* חשוב למובייל */
   overflow-y: auto;
 }
 
