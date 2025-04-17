@@ -28,14 +28,54 @@
   <main class="main-content">
     <!-- כאן כל דף מציב את התוכן שלו -->
 
-  <h2>המסמכים שלי</h2>
-      <ul>
-        <li>📄 מסמך 1</li>
-        <li>📄 מסמך 2</li>
-        <li>📄 מסמך 3</li>
-        <li>📄 מסמך 4</li>
-        <li>📄 מסמך 5</li>
-      </ul>
+ <div id="content-container">
+      <div class="header">
+        <h1>מערכת הצגת נתונים</h1>
+      </div>
+
+      <div class="data-container">
+        <div class="controls">
+          <div class="search-box">
+            <i class="fas fa-search search-icon"></i>
+            <input id="search-input" type="text" placeholder="חיפוש..." />
+          </div>
+
+          <div class="view-toggles">
+            <button id="cards-view-button" class="view-button active">
+              <i class="fas fa-th"></i> כרטיסיות
+            </button>
+            <button id="table-view-button" class="view-button">
+              <i class="fas fa-table"></i> טבלה
+            </button>
+          </div>
+        </div>
+
+        <!-- מחוון טעינה -->
+        <div id="loading-indicator">
+          <div class="spinner"></div>
+          <p>טוען נתונים...</p>
+        </div>
+
+        <!-- תצוגת כרטיסיות -->
+        <div id="cards-view" class="cards-grid"></div>
+
+        <!-- תצוגת טבלה -->
+        <div id="table-view" class="table-container hidden">
+          <table>
+            <thead id="table-header">
+              <tr></tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- הודעה כשאין תוצאות -->
+        <div id="no-results" class="hidden">
+          <p>לא נמצאו תוצאות מתאימות.</p>
+        </div>
+      </div>
+    </div>
+
 
 
   </main>
