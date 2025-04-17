@@ -54,26 +54,25 @@ body {
   text-align: center;
 }
 
-/* ===== אזור הבקרים ===== */
-.data-container {
+/* ===== רכיב חיפוש מותאם ===== */
+.search-view-component {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.search-view-wrapper {
   background-color: var(--card-bg-color);
   border-radius: 12px;
   box-shadow: 0 2px 8px var(--shadow-color);
-  padding: 15px;
-  margin-bottom: 20px;
-  overflow: visible; /* מאפשר לטבלה לגלוש */
-}
-
-.controls {
+  padding: 10px 15px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 15px;
+  align-items: center;
+  gap: 10px;
 }
 
 .search-box {
   position: relative;
-  width: 100%;
+  flex: 1;
 }
 
 .search-icon {
@@ -87,9 +86,9 @@ body {
 
 #search-input {
   width: 100%;
-  padding: 12px 15px 12px 40px;
+  padding: 10px 15px 10px 40px;
   border: 1px solid #ddd;
-  border-radius: 12px;
+  border-radius: 8px;
   font-size: 16px;
   outline: none;
   transition: border-color 0.2s;
@@ -101,41 +100,46 @@ body {
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
 }
 
-.view-toggles {
+.view-toggle-button {
   display: flex;
-  width: 100%;
-  gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
-.view-button {
-  flex: 1;
+.view-switch {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: #666;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  background-color: white;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
   transition: all 0.2s;
-  -webkit-tap-highlight-color: transparent; /* למנוע הבהוב בלחיצה */
 }
 
-.view-button:hover, .view-button:focus {
-  background-color: #f8f8f8;
+.view-switch:hover, .view-switch:focus {
+  background-color: #f0f0f0;
 }
 
-.view-button.active {
-  background-color: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
+.view-switch:active {
+  transform: scale(0.95);
 }
 
-.view-button i {
-  margin-left: 8px;
-  font-size: 16px;
+.view-switch i {
+  font-size: 18px;
+}
+
+/* ===== אזור הבקרים ===== */
+.data-container {
+  background-color: var(--card-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  padding: 15px;
+  margin-bottom: 20px;
+  overflow: visible; /* מאפשר לטבלה לגלוש */
 }
 
 /* ===== מחוון טעינה ===== */
@@ -333,27 +337,18 @@ table tr:active td {
   50% { opacity: 0.8; }
 }
 
+/* === תמיכה בעיגון רכיב החיפוש (לשימוש עתידי) === */
+.search-view-component.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 10px 12px;
+  transition: all 0.3s;
+  background-color: var(--background-color);
+}
+
 /* ===== רספונסיביות ===== */
 @media (min-width: 768px) {
-  .controls {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .search-box {
-    flex: 1;
-    max-width: 60%;
-  }
-  
-  .view-toggles {
-    width: auto;
-  }
-  
-  .cards-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-  
   #content-container {
     max-width: 1200px;
     padding: 20px;
@@ -364,23 +359,24 @@ table tr:active td {
     text-align: right;
   }
   
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
   /* עמודות טבלה רחבות יותר במסך גדול */
   :root {
     --column-width: 150px;
+  }
+  
+  /* רכיב החיפוש במסך גדול */
+  .search-view-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
   }
 }
 
 /* תמיכה במכשירים קטנים במיוחד */
 @media (max-width: 375px) {
-  .view-button {
-    padding: 10px 8px;
-    font-size: 13px;
-  }
-  
-  .view-button i {
-    margin-left: 4px;
-  }
-  
   .card {
     padding: 12px;
   }
@@ -392,6 +388,21 @@ table tr:active td {
   
   :root {
     --column-width: 100px; /* עמודות צרות יותר במכשירים קטנים */
+  }
+  
+  #search-input {
+    font-size: 14px;
+    padding: 8px 8px 8px 36px;
+  }
+  
+  .search-icon {
+    left: 10px;
+    font-size: 16px;
+  }
+  
+  .view-switch {
+    width: 36px;
+    height: 36px;
   }
 }
 
@@ -416,13 +427,13 @@ table tr:active td {
     color: #e0e0e0;
   }
   
-  .view-button {
+  .view-switch {
     background-color: #2a2a2a;
     border-color: #444;
-    color: #e0e0e0;
+    color: #aaa;
   }
   
-  .view-button:hover, .view-button:focus {
+  .view-switch:hover, .view-switch:focus {
     background-color: #333;
   }
   
@@ -438,5 +449,9 @@ table tr:active td {
   .mobile-nav {
     background-color: #1e1e1e;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+  }
+  
+  .search-view-component.sticky {
+    background-color: #121212;
   }
 }
