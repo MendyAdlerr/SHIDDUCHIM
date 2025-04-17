@@ -7,6 +7,43 @@
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  padding-top: 100px; /* סרגל עליון (60px) + inner-toolbar (40px) */
+  padding-bottom: 70px; /* סרגל תחתון */
+  overflow-x: hidden;
+}
+
+//......... אזור הכלים שמתחת לסרגל העליון 
+.inner-toolbar {
+  position: sticky;
+  top: 0;
+  height: 40px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 999;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+//.......... אזור התוכן הראשי 
+.main-content {
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
+
+//.........................................עיצוב הסרגל העליון של האפליקציה
+
+
 body {
   margin: 0;
   font-family: sans-serif;
