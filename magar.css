@@ -11,14 +11,17 @@ body {
   background-color: #f5f5f5;
   color: #333;
   line-height: 1.6;
+  padding-bottom: 60px; /* מונע מהתוכן להיתקע מתחת לסרגל */
 }
 
 #content-container {
-  max-width: 1200px;
+  max-width: 100%; /* ✅ שינוי */
+  width: 100%;      /* ✅ תוספת */
   margin: 0 auto;
   padding: 20px;
 }
 
+/* ===== כותרת עליונה ===== */
 .header {
   margin-bottom: 20px;
 }
@@ -191,6 +194,7 @@ body {
 table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: auto; /* ✅ שיפור למובייל */
 }
 
 table th,
@@ -224,6 +228,16 @@ table tr:hover td {
 
 /* ===== רספונסיביות ===== */
 @media (max-width: 768px) {
+  #content-container,
+  .data-container,
+  .controls,
+  .search-box,
+  .view-toggles,
+  .table-container,
+  .cards-grid {
+    width: 100%; /* ✅ תוספת */
+  }
+
   .controls {
     flex-direction: column;
     align-items: stretch;
@@ -237,8 +251,10 @@ table tr:hover td {
   .cards-grid {
     grid-template-columns: 1fr;
   }
-}
 
-body {
-  padding-bottom: 60px; /* מונע מהתוכן להיתקע מתחת לסרגל */
+  input,
+  button,
+  table {
+    max-width: 100%; /* ✅ תוספת */
+  }
 }
