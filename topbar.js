@@ -13,7 +13,7 @@ fetch("topbar.html")
 
     // שלב 2: טבלה של כותרות לפי דף
     const titles = {
-      "Suggestions.html": "הפרופיל שלי",
+      "UNDEX.html": "הפרופיל שלי",
       "home.html": "עמוד הבית",
       "settings.html": "הגדרות",
       "messages.html": "הודעות"
