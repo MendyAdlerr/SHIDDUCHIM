@@ -25,21 +25,23 @@
       <div class="header">
         <h1>מערכת הצגת נתונים</h1>
       </div>
-      <div class="data-container">
-        <div class="controls">
+
+      <!-- רכיב חיפוש ותצוגה ניתן להעברה -->
+      <div class="search-view-component">
+        <div class="search-view-wrapper">
           <div class="search-box">
             <i class="fas fa-search search-icon"></i>
             <input id="search-input" type="text" placeholder="חיפוש..." />
           </div>
-          <div class="view-toggles">
-            <button id="cards-view-button" class="view-button active">
-              <i class="fas fa-th"></i> כרטיסיות
-            </button>
-            <button id="table-view-button" class="view-button">
-              <i class="fas fa-table"></i> טבלה
+          <div class="view-toggle-button">
+            <button id="toggle-view-button" class="view-switch">
+              <i class="fas fa-th" id="view-icon"></i>
             </button>
           </div>
         </div>
+      </div>
+
+      <div class="data-container">
         <!-- מחוון טעינה -->
         <div id="loading-indicator">
           <div class="spinner"></div>
@@ -80,10 +82,14 @@
       document.addEventListener('DOMContentLoaded', function() {
         const tableContainer = document.querySelector('.table-wrapper');
         const scrollIndicator = document.querySelector('.table-scroll-indicator');
+        const toggleViewButton = document.getElementById('toggle-view-button');
+        const viewIcon = document.getElementById('view-icon');
+        const cardsView = document.getElementById('cards-view');
+        const tableView = document.getElementById('table-view');
         
-        if (tableContainer && scrollIndicator) {
-          // בדיקה אם יש צורך בגלילה אופקית
-          function checkScroll() {
+        // בדיקה אם יש צורך בגלילה אופקית
+        function checkScroll() {
+          if (tableContainer && scrollIndicator) {
             if (tableContainer.scrollWidth > tableContainer.clientWidth) {
               scrollIndicator.classList.remove('hidden');
               
@@ -95,15 +101,36 @@
               scrollIndicator.classList.add('hidden');
             }
           }
-          
-          // בדיקה בעת הצגת הטבלה
-          document.getElementById('table-view-button').addEventListener('click', function() {
-            setTimeout(checkScroll, 100); // קצת זמן לטעינת הטבלה
-          });
-          
-          // בדיקה בעת שינוי גודל החלון
-          window.addEventListener('resize', checkScroll);
         }
+        
+        // טיפול בלחיצה על כפתור החלפת תצוגה
+        if (toggleViewButton) {
+          let isCardView = true; // מצב התחלתי - תצוגת כרטיסיות
+          
+          toggleViewButton.addEventListener('click', function() {
+            isCardView = !isCardView;
+            
+            if (isCardView) {
+              // מעבר לתצוגת כרטיסיות
+              cardsView.classList.remove('hidden');
+              tableView.classList.add('hidden');
+              viewIcon.className = 'fas fa-th';
+              toggleViewButton.setAttribute('title', 'החלף לתצוגת טבלה');
+            } else {
+              // מעבר לתצוגת טבלה
+              cardsView.classList.add('hidden');
+              tableView.classList.remove('hidden');
+              viewIcon.className = 'fas fa-table';
+              toggleViewButton.setAttribute('title', 'החלף לתצוגת כרטיסיות');
+              
+              // בדיקה אם יש צורך בגלילה בטבלה
+              setTimeout(checkScroll, 100);
+            }
+          });
+        }
+        
+        // בדיקה בעת שינוי גודל החלון
+        window.addEventListener('resize', checkScroll);
       });
     </script>
   </body>
