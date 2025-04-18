@@ -1,5 +1,3 @@
-
-
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 //.........................................עיצוב הסרגל העליון של האפליקציה
@@ -17,8 +15,6 @@ body {
   padding-bottom: 70px; /* סרגל תחתון */
   overflow-x: hidden;
 }
-
-
 
 //......... אזור הכלים שמתחת לסרגל העליון 
 
@@ -53,6 +49,13 @@ body {
 
 //.........................................עיצוב הסרגל העליון של האפליקציה
 
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  padding-top: 60px; /* מרווח לסרגל עליון */
+}
 
 .topbar {
   position: fixed;
@@ -93,6 +96,13 @@ body {
 
 //.........................................עיצוב הסרגל התחתון של האפליקציה
 
+
+body {
+  margin: 0;
+  padding-bottom: 70px; /* רווח לסרגל */
+  font-family: sans-serif;
+  background-color: #f0f0f0;
+}
 
 .bottom-nav {
   position: fixed;
