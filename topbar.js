@@ -15,7 +15,7 @@ fetch("topbar.html")
     const titles = {
       "UNDEX.html": "הפרופיל שלי",
       "home.html": "עמוד הבית",
-      "Suggestions.html": "הגדרות",
+      "Suggestions.html": "מערכת הצגת נתונים",
       "messages.html": "הודעות"
     };
 
