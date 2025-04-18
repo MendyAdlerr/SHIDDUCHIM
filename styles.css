@@ -48,7 +48,7 @@ body {
 /* אזור עליון פנימי */
 .inner-toolbar {
   position: sticky;
-  top: 60;
+  top: 0;
   background-color: #ffffff;
   z-index: 999;
   display: flex;
