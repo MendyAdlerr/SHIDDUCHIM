@@ -2,12 +2,8 @@
 fetch("topbar.html")
   .then(res => res.text())
   .then(html => {
+    // שתול את הסרגל למקום הנכון
     document.getElementById("topbar-placeholder").innerHTML = html;
-  });
-
-
-
-
 
     // שלב 1: זיהוי שם הקובץ (למשל "profile.html")
     const path = window.location.pathname;
@@ -22,19 +18,17 @@ fetch("topbar.html")
     };
 
     // שלב 3: הכנסה לסרגל
-    const titleEl = container.querySelector("#page-title");
+    const titleEl = document.querySelector("#page-title");
     if (titleEl && titles[filename]) {
       titleEl.textContent = titles[filename];
     }
 
-
-
     // גלילה מעלימה את הסרגל העליון
     let lastScrollTop = 0;
-    window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function () {
       let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
       const topbar = document.querySelector(".topbar");
-      if (currentScroll > lastScrollTop && currentScroll > 30){
+      if (currentScroll > lastScrollTop && currentScroll > 30) {
         topbar.style.top = "-70px";
       } else {
         topbar.style.top = "0";
