@@ -1,62 +1,17 @@
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
-//.........................................עיצוב הסרגל העליון של האפליקציה
-
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #f9f9f9;
-  padding-top: 100px; /* סרגל עליון (60px) + inner-toolbar (40px) */
-  padding-bottom: 70px; /* סרגל תחתון */
+  background-color: #f0f0f0;
+  padding-top: 100px;
+  padding-bottom: 70px;
   overflow-x: hidden;
 }
 
-//......... אזור הכלים שמתחת לסרגל העליון 
-
-.inner-toolbar {
-  position: fixed;
-  top: 60px; /* בדיוק אחרי הסרגל העליון (שגובהו 60px) */
-  left: 0;
-  right: 0;
-  height: 40px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  padding: 0 1rem;
-  z-index: 999;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-
-
-//.......... אזור התוכן הראשי 
-
-.main-content {
-  padding: 1rem;
-  margin: 0 auto;
-  max-width: 800px;         /* רוחב מקסימלי במסכים גדולים */
-  width: 100%;              /* תופס את כל הרוחב במסכים קטנים */
-  box-sizing: border-box;   /* חשוב למובייל */
-  overflow-y: auto;
-}
-
-
-//.........................................עיצוב הסרגל העליון של האפליקציה
-
-
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background-color: #f9f9f9;
-  padding-top: 60px; /* מרווח לסרגל עליון */
-}
-
+/* סרגל עליון */
 .topbar {
   position: fixed;
   top: 0;
@@ -91,19 +46,33 @@ body {
   object-fit: cover;
 }
 
-
-
-
-//.........................................עיצוב הסרגל התחתון של האפליקציה
-
-
-body {
-  margin: 0;
-  padding-bottom: 70px; /* רווח לסרגל */
-  font-family: sans-serif;
-  background-color: #f0f0f0;
+/* אזור עליון פנימי */
+.inner-toolbar {
+  position: sticky;
+  top: 60px;
+  left: 0;
+  right: 0;
+  height: auto;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  z-index: 999;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+/* תוכן מרכזי */
+.main-content {
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* סרגל תחתון */
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -140,11 +109,7 @@ body {
   color: #128c7e;
 }
 
-
-
-
-//.........................................עיצוב לשוניות עליון איזור אישי האפליקציה
-
+/* לשוניות */
 .scrolling-tabs {
   position: fixed;
   top: 60px;
@@ -174,3 +139,4 @@ body {
   color: #1976d2;
   border-bottom: 2px solid #1976d2;
 }
+
