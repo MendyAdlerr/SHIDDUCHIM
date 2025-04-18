@@ -141,3 +141,38 @@ body {
 .nav-item:active {
   color: #128c7e;
 }
+
+
+
+
+//.........................................עיצוב לשוניות עליון איזור אישי האפליקציה
+
+.scrolling-tabs {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: #fff;
+  display: flex;
+  overflow-x: auto;
+  border-bottom: 1px solid #ddd;
+  z-index: 999;
+}
+
+.tab-button {
+  flex: 0 0 auto;
+  padding: 0 16px;
+  height: 100%;
+  line-height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.tab-button.active {
+  color: #1976d2;
+  border-bottom: 2px solid #1976d2;
+}
