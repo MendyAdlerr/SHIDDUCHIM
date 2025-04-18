@@ -2,9 +2,11 @@
 fetch("topbar.html")
   .then(res => res.text())
   .then(html => {
-    const container = document.createElement("div");
-    container.innerHTML = html;
-    document.body.prepend(container);
+    document.getElementById("topbar-placeholder").innerHTML = html;
+  });
+
+
+
 
 
     // שלב 1: זיהוי שם הקובץ (למשל "profile.html")
